@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котики</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #catContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cat-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+            max-width: 300px;
+            background-color: #fff;
+        }
+
+        .cat-img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Информация о котах</h1>
+    <div id="catContainer"></div>
+
+    <script src="cats.js"></script>
+    <script>
+        const catContainer = document.getElementById('catContainer');
+
+        function createCatCard(cat) {
+            const card = document.createElement('div');
+            card.className = 'cat-card';
+
+            const img = document.createElement('img');
+            img.src = cat.img_link;
+            img.alt = cat.name;
+            img.className = 'cat-img';
+            card.appendChild(img);
+
+            const name = document.createElement('h2');
+            name.textContent = cat.name;
+            card.appendChild(name);
+
+            const age = document.createElement('p');
+            age.textContent = `Age: ${cat.age} years`;
+            card.appendChild(age);
+
+            const rate = document.createElement('p');
+            rate.textContent = `Rate: ${cat.rate}/10`;
+            card.appendChild(rate);
+
+            const description = document.createElement('p');
+            description.textContent = cat.description;
+            card.appendChild(description);
+
+            catContainer.appendChild(card);
+        }
+
+        cats.forEach(createCatCard);
+    </script>
+</body>
+</html>
